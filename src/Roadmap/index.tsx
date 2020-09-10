@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react'
 
-import { isDefined } from '@csssr/gpn-utils/lib/type-guards'
+import { isDefined } from '@consta/widgets-utils/lib/type-guards'
 import { useComponentSize } from '@gpn-design/uikit/useComponentSize'
 import { Position } from '@gpn-design/uikit/Popover'
 import { Table, TableColumn, TableFilters, TableRow } from '@gpn-design/uikit/Table'

@@ -31,24 +31,6 @@ jobs:
             ${{ runner.os }}-yarn-
       - name: Установка зависимостей
         run: yarn --frozen-lockfile
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_GITHUB_REGISTRY_TOKEN }}
-
       - name: Тесты
         run: yarn test
 
-      - name: Сборка storybook
-        run: yarn storybook:build
-      - name: Загрузка экшена деплоя
-        uses: actions/checkout@v2
-        with:
-          repository: CSSSR/actions
-          token: ${{ secrets.DOWNLOAD_ACTIONS_TOKEN }}
-          path: .csssr-actions
-      - name: Деплой
-        uses: ./.csssr-actions/deploy-static-site/v1beta1
-        with:
-          project-id: gpn-components
-          files: ./build/storybook
-          auth: ${{ secrets.CDN_UPLOAD_SECRET }}
-          token: ${{ secrets.GITHUB_TOKEN }}

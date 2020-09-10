@@ -2255,10 +2255,10 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@csssr/gpn-configs@1.1.1":
-  version "1.1.1"
-  resolved "https://npm.pkg.github.com/download/@csssr/gpn-configs/1.1.1/fb9645c81befd6ae79c7b7ef60a039460452bc14dea32efcbd9c3e33aba63a79#1bd8f21e480e1cd540342d192306908348329b87"
-  integrity sha512-imrXux6Do+/4TGi92Lfmt1q4s6Se6onIyYofaEKZzEvE6XG8jQ415j3GGxiHKXFxKZkpRmqbUqPcEmn1NCMXDA==
+"@consta/widgets-configs@1.1.2-0":
+  version "1.1.2-0"
+  resolved "https://registry.yarnpkg.com/@consta/widgets-configs/-/widgets-configs-1.1.2-0.tgz#85ee35dd53d067f02ef45e59e1358f82ca0e3089"
+  integrity sha512-Unc0lUFEgCDCsr9tGNn1YsipjGZz+Cc//JUWCdcu/PgIhzaa7D6M1cex5nwX/lHy3XQhpK3WOHuBGdq1HK7kjQ==
   dependencies:
     "@babel/core" "7.4.5"
     "@babel/plugin-proposal-class-properties" "7.4.4"
@@ -2328,10 +2328,10 @@
     webpack-cli "3.3.9"
     webpack-merge "4.2.1"
 
-"@csssr/gpn-utils@0.2.13":
-  version "0.2.13"
-  resolved "https://npm.pkg.github.com/download/@csssr/gpn-utils/0.2.13/a814fc3d40b9e3f85c4514e9fe48c5bcc1b05fa72455250ab7486c81b349a9d5#516a0730ebcd81cdd34c3bdf45d5e5ea792d8e6d"
-  integrity sha512-E6k1Al4zp77i/vnQ4QpKm4AIElolInLQVLReMULBTz+hKX62IuTm2M8TlFY7Ra3q/fUfDP53XnaVBxmSK9ezhg==
+"@consta/widgets-utils@0.2.14-0":
+  version "0.2.14-0"
+  resolved "https://registry.yarnpkg.com/@consta/widgets-utils/-/widgets-utils-0.2.14-0.tgz#79ac6a986595835fe5dd1b942268ec94ec121bf0"
+  integrity sha512-Jf9ZZOI3HBrVW6eQE7Ppi3r+3dpJViAbEERj//xXvpd/2c9c5IVihUO8o8m/SQdixPOkQfymPdMke8M4pMmjOQ==
 
 "@csstools/convert-colors@^1.4.0":
   version "1.4.0"

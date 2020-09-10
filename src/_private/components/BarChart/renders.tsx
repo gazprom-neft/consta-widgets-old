@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { isDefined, isNotNil } from '@csssr/gpn-utils/lib/type-guards'
+import { isDefined, isNotNil } from '@consta/widgets-utils/lib/type-guards'
 import _ from 'lodash'
 
 import { FormatValue } from '@/_private/types'

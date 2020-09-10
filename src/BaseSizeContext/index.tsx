@@ -4,7 +4,7 @@ import {
   BASE_SIZE_PROPERTY_NAME,
   DEFAULT_BASE_SIZE,
   getCalculatedSize,
-} from '@csssr/gpn-utils/lib/css'
+} from '@consta/widgets-utils/lib/css'
 
 import css from './index.css'
 

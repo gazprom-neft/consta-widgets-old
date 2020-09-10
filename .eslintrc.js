@@ -1,5 +1,5 @@
 module.exports = {
-  extends: [require.resolve('@csssr/gpn-configs/eslintrc')],
+  extends: [require.resolve('@consta/widgets-configs/eslintrc')],
   overrides: [
     {
       files: ['./src/**/index.stories.tsx'],

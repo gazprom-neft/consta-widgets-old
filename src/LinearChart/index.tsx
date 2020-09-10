@@ -1,7 +1,7 @@
 import React from 'react'
 import { uid } from 'react-uid'
 
-import { isNotNil } from '@csssr/gpn-utils/lib/type-guards'
+import { isNotNil } from '@consta/widgets-utils/lib/type-guards'
 import * as d3 from 'd3'
 import * as _ from 'lodash'
 

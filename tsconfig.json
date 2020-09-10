@@ -1,5 +1,5 @@
 {
-  "extends": "@csssr/gpn-configs/tsconfig",
+  "extends": "@consta/widgets-configs/tsconfig",
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {

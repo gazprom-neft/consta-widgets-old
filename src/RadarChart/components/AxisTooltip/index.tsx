@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { isDefined } from '@csssr/gpn-utils/lib/type-guards'
+import { isDefined } from '@consta/widgets-utils/lib/type-guards'
 import { Text } from '@gpn-design/uikit/Text'
 import { Tooltip } from '@gpn-design/uikit/Tooltip'
 import * as _ from 'lodash'

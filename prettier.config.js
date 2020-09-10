@@ -1,3 +1,3 @@
 module.exports = {
-  ...require('@csssr/gpn-configs/prettier.config.js'),
+  ...require('@consta/widgets-configs/prettier.config.js'),
 }

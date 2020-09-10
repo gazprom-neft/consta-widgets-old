@@ -1,7 +1,7 @@
 import React from 'react'
 import { Textfit } from 'react-textfit'
 
-import { isDefined, isNotNil } from '@csssr/gpn-utils/lib/type-guards'
+import { isDefined, isNotNil } from '@consta/widgets-utils/lib/type-guards'
 import classnames from 'classnames'
 
 import { useBaseSize } from '@/BaseSizeContext'

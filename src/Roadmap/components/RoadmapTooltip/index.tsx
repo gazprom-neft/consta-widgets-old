@@ -1,6 +1,6 @@
 import React, { RefObject } from 'react'
 
-import { getDayPlural } from '@csssr/gpn-utils/lib/pluralization'
+import { getDayPlural } from '@consta/widgets-utils/lib/pluralization'
 import { Position, usePopoverReposition } from '@gpn-design/uikit/Popover'
 import { Text } from '@gpn-design/uikit/Text'
 import { Tooltip } from '@gpn-design/uikit/Tooltip'

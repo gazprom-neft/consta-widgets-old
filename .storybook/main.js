@@ -1,4 +1,4 @@
-const getCommonConfig = require('@csssr/gpn-configs/config/webpack/common.webpack')
+const getCommonConfig = require('@consta/widgets-configs/config/webpack/common.webpack')
 const webpackMerge = require('webpack-merge')
 const omit = require('lodash/omit')
 const flowRight = require('lodash/flowRight')

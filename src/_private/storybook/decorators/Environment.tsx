@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { DEFAULT_BASE_SIZE } from '@csssr/gpn-utils/lib/css'
-import { isDefined } from '@csssr/gpn-utils/lib/type-guards'
+import { DEFAULT_BASE_SIZE } from '@consta/widgets-utils/lib/css'
+import { isDefined } from '@consta/widgets-utils/lib/type-guards'
 import { number, text } from '@storybook/addon-knobs'
 import { DecoratorFn } from '@storybook/react'
 import { EnvironmentDecoratorParams } from '@storybook/types'

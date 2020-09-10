@@ -1,4 +1,4 @@
-import { isDefined } from '@csssr/gpn-utils/lib/type-guards'
+import { isDefined } from '@consta/widgets-utils/lib/type-guards'
 
 import { HalfDonut } from '@/_private/components/DonutChart/components/Donut'
 import { Data as DonutChartData } from '@/_private/components/DonutChart/helpers'

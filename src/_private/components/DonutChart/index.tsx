@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 
-import { createArrayOfIndexes } from '@csssr/gpn-utils/lib/array'
-import { isDefined } from '@csssr/gpn-utils/lib/type-guards'
+import { createArrayOfIndexes } from '@consta/widgets-utils/lib/array'
+import { isDefined } from '@consta/widgets-utils/lib/type-guards'
 import { useComponentSize } from '@gpn-design/uikit/useComponentSize'
 import { Position } from '@gpn-design/uikit/Popover'
 import { Tooltip } from '@gpn-design/uikit/Tooltip'

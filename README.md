@@ -11,10 +11,10 @@
 
 ```sh
 # NPM
-$ npm i @csssr/gpn-components
+$ npm i @consta/widgets
 
 # Yarn
-$ yarn add @csssr/gpn-components
+$ yarn add @consta/widgets
 ```
 
 ### Зависимости
@@ -26,8 +26,8 @@ $ yarn add @csssr/gpn-components
 Для корректной работы скейлинга компонентов не в порталах необходимо в корневой компонент добавить Provider для управления скейлингом, пример настройки скейлинга компонентов с установкой темы:
 
 ```tsx
-import { presetGpnScaling } from '@csssr/gpn-components/theme'
-import { BaseSizeProvider } from '@csssr/gpn-components/BaseSizeContext'
+import { presetGpnScaling } from '@consta/widgets/theme'
+import { BaseSizeProvider } from '@consta/widgets/BaseSizeContext'
 import { presetGpnDisplay, Theme } from '@gpn-design/uikit/Theme'
 
 const themePreset = {
@@ -53,7 +53,7 @@ export const App = () => {
 Пример импорта компонента:
 
 ```js
-import { BarChart } from '@csssr/gpn-components/Barchart'
+import { BarChart } from '@consta/widgets/Barchart'
 ```
 
 ## Разработка

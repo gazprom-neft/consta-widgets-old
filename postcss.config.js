@@ -1,5 +1,5 @@
 const path = require('path')
-const { calcSize } = require('@csssr/gpn-utils/lib/css')
+const { calcSize } = require('@consta/widgets-utils/lib/css')
 
 // При локальной сборке после изменений в этом конфиге нужно удалить кэш babel-плагина (папка /tmp/bptp-*)
 // https://github.com/wbyoung/babel-plugin-transform-postcss#caching

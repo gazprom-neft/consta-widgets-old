@@ -1,4 +1,4 @@
-import { isNotNil } from '@csssr/gpn-utils/lib/type-guards'
+import { isNotNil } from '@consta/widgets-utils/lib/type-guards'
 
 import { Column, Group } from './'
 

@@ -1,6 +1,6 @@
 import React, { useLayoutEffect } from 'react'
 
-import { isNotNil } from '@csssr/gpn-utils/lib/type-guards'
+import { isNotNil } from '@consta/widgets-utils/lib/type-guards'
 import classnames from 'classnames'
 import * as d3 from 'd3'
 import * as _ from 'lodash'

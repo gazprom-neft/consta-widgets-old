@@ -4,7 +4,7 @@ module.exports = {
   ignore: ['**/*.css.d.ts', '**/*.stories.tsx', '**/__tests__/*'],
   comments: false,
   presets: [
-    require('@csssr/gpn-configs/config/webpack/babel'),
+    require('@consta/widgets-configs/config/webpack/babel'),
     require('@babel/preset-typescript').default,
     [
       require('babel-preset-minify'),

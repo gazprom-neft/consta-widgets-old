@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { createArrayOfIndexes } from '@csssr/gpn-utils/lib/array'
+import { createArrayOfIndexes } from '@consta/widgets-utils/lib/array'
 import { Text } from '@gpn-design/uikit/Text'
 
 import { Data } from './'

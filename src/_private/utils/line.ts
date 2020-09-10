@@ -1,4 +1,4 @@
-import { updateAt } from '@csssr/gpn-utils/lib/array'
+import { updateAt } from '@consta/widgets-utils/lib/array'
 
 type Points<T> = readonly T[]
 

@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { getArrayWithRandomInt } from '@csssr/gpn-utils/lib/array'
-import { isNotNil } from '@csssr/gpn-utils/lib/type-guards'
+import { getArrayWithRandomInt } from '@consta/widgets-utils/lib/array'
+import { isNotNil } from '@consta/widgets-utils/lib/type-guards'
 import { Text } from '@gpn-design/uikit/Text'
 import { boolean, number, object, select, text } from '@storybook/addon-knobs'
 import { withSmartKnobs } from 'storybook-addon-smart-knobs'

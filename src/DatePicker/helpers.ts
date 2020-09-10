@@ -1,4 +1,4 @@
-import { isDefined } from '@csssr/gpn-utils/lib/type-guards'
+import { isDefined } from '@consta/widgets-utils/lib/type-guards'
 import { format, isWithinInterval } from 'date-fns'
 import ruLocale from 'date-fns/locale/ru'
 
