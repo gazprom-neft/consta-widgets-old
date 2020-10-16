@@ -33,6 +33,7 @@ export type Props = {
   unitPosition?: UnitPosition
   showValues?: boolean
   isHorizontal?: boolean
+  withScroll?: boolean
   align?: Align
   threshold?: Threshold
   formatValueForLabel?: FormatValue

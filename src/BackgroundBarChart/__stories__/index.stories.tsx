@@ -1,10 +1,11 @@
 import React from 'react'
 
-import { boolean, number, object, select, text } from '@storybook/addon-knobs'
+import { text } from '@storybook/addon-knobs'
+import { withSmartKnobs } from 'storybook-addon-smart-knobs'
 
-import { createMetadata, createStory, environmentDecorator } from '@/_private/storybook'
+import { createMetadata, createStory } from '@/_private/storybook'
 
-import { aligns, BackgroundBarChart } from '..'
+import { BackgroundBarChart } from '..'
 import { groups } from '../data.mock'
 
 import docs from './docs.mdx'
@@ -13,32 +14,50 @@ const getCommonProps = (initialUnit: string) => {
   const unit = text('unit', initialUnit)
 
   return {
-    groups: object('groups', groups),
-    gridTicks: number('gridTicks', 4),
-    valuesTicks: number('valuesTicks', 1),
+    groups,
+    gridTicks: 4,
+    valuesTicks: 1,
     formatValueForTooltip: (v: number) => `${v} ${unit}`,
     unit,
-    align: select('align', aligns, 'start'),
-    isHorizontal: boolean('isHorizontal', true),
-    showValues: boolean('showValues', false),
+    align: 'start',
+    isHorizontal: true,
+    showValues: false,
   } as const
 }
 
-export const Interactive = createStory(() => {
-  return <BackgroundBarChart {...getCommonProps('тыс. м³')} />
-})
+export const Interactive = createStory(
+  () => {
+    return <BackgroundBarChart {...getCommonProps('тыс. м³')} />
+  },
+  {
+    parameters: {
+      environment: {
+        style: { width: '40vw' },
+      },
+    },
+  }
+)
+
+export const WithVerticalScroll = createStory(
+  () => {
+    return <BackgroundBarChart {...getCommonProps('тыс. м³')} withScroll />
+  },
+  {
+    name: 'С вертикальным скроллом',
+    parameters: {
+      environment: {
+        style: { width: '40vw', height: '250px' },
+      },
+    },
+  }
+)
 
 export default createMetadata({
   title: 'components/BackgroundBarChart',
-  decorators: [environmentDecorator()],
+  decorators: [withSmartKnobs()],
   parameters: {
     docs: {
       page: docs,
-    },
-    environment: {
-      style: {
-        width: '40vw',
-      },
     },
   },
 })
