@@ -7,8 +7,10 @@ import { createMetadata, createStory } from '@/_private/storybook'
 import { labelPositions, labelTypes, sizes } from '@/LegendItem'
 import { LinearChart } from '@/LinearChart'
 
-import { directions, Legend } from '.'
-import { interactiveData, withChart } from './data.mock'
+import { directions, Legend } from '..'
+import { interactiveData, withChart } from '../data.mock'
+
+import docs from './docs.mdx'
 
 const getCommonProps = () =>
   ({
@@ -62,4 +64,9 @@ export const WithChart = createStory(
 
 export default createMetadata({
   title: 'components/Legend',
+  parameters: {
+    docs: {
+      page: docs,
+    },
+  },
 })

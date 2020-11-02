@@ -6,8 +6,10 @@ import { withSmartKnobs } from 'storybook-addon-smart-knobs'
 import { unitPositions } from '@/_private/components/BarChart'
 import { createMetadata, createStory } from '@/_private/storybook'
 
-import { BarChart } from './'
-import { minimalData, withNegativeValueData, withThreeColumnsData } from './data.mock'
+import { BarChart } from '..'
+import { minimalData, withNegativeValueData, withThreeColumnsData } from '../data.mock'
+
+import docs from './docs.mdx'
 
 const getCommonProps = (initialUnit: string) => {
   const unit = text('unit', initialUnit)
@@ -94,6 +96,9 @@ export default createMetadata({
   title: 'components/BarChart',
   decorators: [withSmartKnobs()],
   parameters: {
+    docs: {
+      page: docs,
+    },
     environment: {
       style: {
         width: '60vw',

@@ -1,0 +1,154 @@
+import { LegendExampleText } from './examples/LegendExampleText'
+import { LegendExampleSize } from './examples/LegendExampleSize'
+import { LegendExampleType, LegendExampleTypeLine } from './examples/LegendExampleType'
+import {
+  LegendExampleDirectionRow,
+  LegendExampleDirectionColumn,
+} from './examples/LegendExampleDirection'
+
+# Legend
+
+Легенда объясняет, что значат цвета на графике или карте. Позволяет прикрепить
+к любому объекту набор цветных маркеров с текстом.
+
+- [Маркеры и подписи](#маркеры-и-подписи)
+- [Расположение](#расположение)
+- [Размер подписи](#размер-подписи)
+- [Типы маркеров](#типы-маркеров)
+- [Список свойств](#свойства)
+- [Примеры использования](#примеры)
+
+## Маркеры и подписи
+
+Список маркеров и подписей к ним задается в объекте `data`:
+
+- в `color` указывается цвет маркера,
+- в `text` — расшифровка, что значит на графике этот цвет.
+
+Начните подпись с заглавной буквы, точка не нужна.
+
+> Если хотите, чтобы цвета маркеров менялись вместе с темой, указывайте их с помощью переменных.
+
+<LegendExampleText />
+
+```tsx
+<Legend
+  direction="column"
+  data={[
+    {
+      color: 'var(--color-bg-alert)',
+      text: 'Эта линия красивая красная',
+    },
+    {
+      color: 'var(--color-bg-normal)',
+      text: 'Эта линия красивая синяя',
+    },
+    {
+      color: 'var(--color-bg-warning)',
+      text: 'Эта линия - вообще супер, и, кстати, она желтая',
+    },
+    {
+      color: 'var(--color-bg-success)',
+      text: 'Эта линия зеленая',
+    },
+  ]}
+  fontSize="s"
+  labelType="dot"
+  labelPosition="left"
+/>
+```
+
+## Расположение
+
+Пункты в легенде могут располагаться вертикально или горизонтально.
+За расположение отвечает свойство `direction`.
+
+Варианты:
+
+- `'row'` — на одной строке, без переносов,
+- `'column'` — в столбик, друг под другом.
+
+| row                           | column                           |
+| ----------------------------- | -------------------------------- |
+| <LegendExampleDirectionRow /> | <LegendExampleDirectionColumn /> |
+
+## Размер подписи
+
+За размер подписи отвечает свойство `fontSize`. Варианты: `'xs'`, `'s'`, `'m'`.
+
+<LegendExampleSize />
+
+```tsx
+<Legend
+  fontSize="xs"
+  data={[
+    {
+      color: 'var(--color-bg-alert)',
+      text: 'Надпись XS',
+    },
+  ]}
+  labelType="dot"
+  labelPosition="left"
+/>
+```
+
+## Типы маркеров
+
+За тип маркеров отвечает свойство `labelType`. Варианты: `'dot'`, `'line'`, `'warning'`.
+
+<LegendExampleType />
+
+У `line` есть модификаторы:
+
+- чтобы сделать полоску толще, добавьте `lineBold`,
+- чтобы расположить полоску сверху от надписи, используйте `labelPosition = 'top'`.
+  В остальных случаях указывайте `labelPosition = 'left'`
+
+<LegendExampleTypeLine />
+
+## Свойства
+
+<!-- props:start -->
+
+| Свойство                          | Тип                                    | По умолчанию | Описание                                                         |
+| --------------------------------- | -------------------------------------- | ------------ | ---------------------------------------------------------------- |
+| [`data`](#маркеры-и-подписи)      | `Item[]`                               | -            | Объект с данными для легенды, цвет маркера и текст к нему        |
+| [`direction`](#расположение)      | `'column'`, `'row'`                    | -            | Расположение легенды: в столбик или на одной строке.             |
+| [`fontSize`](#размер-подписи)     | `'xs',`'s'`,`'m'` | - | Размер подписи |
+| [`labelType`](#типы-маркеров)     | `'dot'`, `'line'`, `'warning'`         | -            | Тип маркера                                                      |
+| [`lineBold?`](#типы-маркеров)     | `boolean`                              | `false`      | Толщина маркера для `labelType = line`                           |
+| [`labelPosition`](#типы-маркеров) | `'left'`, `'top'`                      | -            | Расположение маркера относительно подписи для `labelType = line` |
+| `onItemMouseEnter?`               | `(item: Item) => void`                 | -            | Действие при наведении курсора на элемент                        |
+| `onItemMouseLeave?`               | `(item: Item) => void`                 | -            | Действие при выходе курсора за границы элемента                  |
+
+## Примеры
+
+```tsx
+// src/App.ts
+import React from 'react'
+import { Legend } from '@consta/widgets/Legend'
+const App = () => {
+  return (
+    <Legend
+      data={[
+        {
+          color: 'var(--color-bg-alert)',
+          text: 'Пункт раз',
+        },
+        {
+          color: 'var(--color-bg-warning)',
+          text: 'Пункт два',
+        },
+        {
+          color: 'var(--color-bg-success)',
+          text: 'Пункт три',
+        },
+      ]}
+      direction="column"
+      fontSize="s"
+      labelType="dot"
+      labelPosition="left"
+    />
+  )
+}
+```

@@ -5,7 +5,9 @@ import { withSmartKnobs } from 'storybook-addon-smart-knobs'
 
 import { createMetadata, createStory } from '@/_private/storybook'
 
-import { ImagesPopup } from '.'
+import { ImagesPopup } from '..'
+
+import docs from './docs.mdx'
 
 export const Interactive = createStory(() => (
   <ImagesPopup
@@ -24,6 +26,9 @@ export default createMetadata({
   title: 'components/ImagesPopup',
   decorators: [withSmartKnobs()],
   parameters: {
+    docs: {
+      page: docs,
+    },
     environment: { scaling: false },
   },
 })

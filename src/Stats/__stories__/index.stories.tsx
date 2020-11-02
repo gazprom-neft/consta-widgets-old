@@ -5,7 +5,9 @@ import { withSmartKnobs } from 'storybook-addon-smart-knobs'
 
 import { createMetadata, createStory } from '@/_private/storybook'
 
-import { Data, Stats } from './'
+import { Data, Stats } from '..'
+
+import docs from './docs.mdx'
 
 const getBadgeKnob = (badge: Data['badge']) => {
   return boolean('отобразить бейдж', true) ? object('badge', badge) : undefined
@@ -46,6 +48,9 @@ export default createMetadata({
   title: 'components/Stats',
   decorators: [withSmartKnobs({ ignoreProps: ['badge'] })],
   parameters: {
+    docs: {
+      page: docs,
+    },
     environment: {
       style: {
         width: 200,

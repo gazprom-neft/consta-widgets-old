@@ -1,6 +1,7 @@
 import { select } from '@storybook/addon-knobs'
 import { CSFStory, StoryMetadata } from '@storybook/types'
 
+export * from './components'
 export * from './decorators'
 export * from './formatters'
 

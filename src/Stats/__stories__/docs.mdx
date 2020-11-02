@@ -1,0 +1,146 @@
+import {
+  StatsExampleContent,
+  StatsExampleContentOther,
+  StatsExampleContentWithSign,
+  StatsExampleContentLong,
+} from './examples/StatsExampleContent'
+import {
+  StatsExampleSize2XS,
+  StatsExampleSizeXS,
+  StatsExampleSizeS,
+  StatsExampleSizeM,
+  StatsExampleSizeL,
+} from './examples/StatsExampleSize'
+import {
+  StatsExampleLayoutFull,
+  StatsExampleLayoutFullReversed,
+  StatsExampleLayoutFullWithoutTitle,
+  StatsExampleLayoutCompactTitle,
+  StatsExampleLayoutCompactUnit,
+} from './examples/StatsExampleLayout'
+
+# Stats
+
+Этот компонент нужен, чтобы показывать важные числа — на графиках, схемах, картах или сами по себе.
+Например, количество филиалов или процент прибыли.
+
+Число может быть очень заметным, к нему можно добавить комментарии.
+
+- [Как использовать](#как-использовать)
+  - [Плюс в начале](#плюс-в-начале)
+  - [Длинные строчки](#длинные-строчки)
+- [Варианты отображения](#варианты-отображения)
+- [Размер](#размер)
+- [Список свойств](#свойства)
+- [Пример использования](#пример)
+
+## Как использовать
+
+Главный элемент этого компонента — число, которое нужно выделить. Укажите его в свойстве `value`.
+
+**Заголовок** — надпись над числом, задается в свойстве `title`.
+
+**Единицы** — подпись под числом, обычно тут указывают единицы измерения — км/ч, сутки, баррели или ведерки.
+Задается в свойстве `units`.
+
+**Проценты** появляются справа, задаются в объекте `badge`:
+
+- в `percentage` укажите проценты,
+- в `status` — цвет плашки с процентами. Варианты: `'success', 'warning', 'error', 'normal', 'system'`.
+
+<StatsExampleContent />
+
+```tsx
+<Stats
+  title="Заголовок"
+  value={146}
+  badge={{
+    percentage: 100,
+    status: 'normal',
+  }}
+  unit="единиц"
+  layout="full"
+  size="s"
+/>
+```
+
+### Плюс в начале
+
+Можно поставить перед числом плюс — чтобы показать, что что-то увеличилось. Для этого добавьте свойство `withSign`.
+
+<StatsExampleContentWithSign />
+
+```tsx
+<Stats
+  title="Выработка"
+  value={250}
+  badge={{
+    percentage: 20,
+    status: 'success',
+  }}
+  unit="тысяч тонн в час"
+  layout="full"
+  size="s"
+  withSign
+/>
+```
+
+### Длинные строчки
+
+Если родительский контейнер ограничен по ширине, длинные строки переносятся.
+
+<StatsExampleContentLong />
+
+## Варианты отображения
+
+Вы можете выбрать, как показывать компонент: полностью, только с заголовком, только с единицами или как-то еще.
+Варианты: `'full'`, `'compact-title'`, `'compact-unit'`, `'full-without-title'`, `'full-reversed'`.
+
+| full                       | full-without-title                     | full-reversed                      | compact-title                      | compact-unit                      |
+| -------------------------- | -------------------------------------- | ---------------------------------- | ---------------------------------- | --------------------------------- |
+| <StatsExampleLayoutFull /> | <StatsExampleLayoutFullWithoutTitle /> | <StatsExampleLayoutFullReversed /> | <StatsExampleLayoutCompactTitle /> | <StatsExampleLayoutCompactUnit /> |
+
+## Размер
+
+За размер отвечает свойство `size`. Варианты: `'2xs'`, `'xs'`, `'s'`, `'m'`, `'l'`.
+
+| 2xs                     | xs                     | s                     | m                     | l                     |
+| ----------------------- | ---------------------- | --------------------- | --------------------- | --------------------- |
+| <StatsExampleSize2XS /> | <StatsExampleSizeXS /> | <StatsExampleSizeS /> | <StatsExampleSizeM /> | <StatsExampleSizeL /> |
+
+## Свойства
+
+<!-- props:start -->
+
+| Свойство                           | Тип                                                                             | По умолчанию | Описание                                                                  |
+| ---------------------------------- | ------------------------------------------------------------------------------- | ------------ | ------------------------------------------------------------------------- |
+| [`value`](#как-использовать)       | `number`                                                                        | -            | Число, которое нужно показать                                             |
+| [`withSign?`](#плюс-в-начале)      | `boolean`                                                                       | -            | Добавляет плюс перед числом                                               |
+| [`title?`](#как-использовать)      | `string`                                                                        | -            | Надпись над числом, заголовок — поясняет, что это                         |
+| [`badge?`](#как-использовать)      | `Item[]`                                                                        | -            | Объект с данными для отображения процентов                                |
+| [`unit?`](#как-использовать)       | `string`                                                                        | -            | Надпись под числом, единицы — поясняет, в каких единицах измеряется число |
+| [`layout?`](#варианты-отображения) | `'compact-title', 'compact-unit','full', 'full-without-title', 'full-reversed'` | `full`       | Вариант отображения                                                       |
+| [`size`](#размер)                  | `'2xs', 'xs', 's', 'm', 'l'`                                                    | `'xs'`       | Размер компонента                                                         |
+
+## Пример
+
+```tsx
+// src/App.ts
+import React from 'react'
+import { Stats } from '@consta/widgets/Stats'
+const App = () => {
+  return (
+    <Stats
+      title="Заголовок"
+      value={146}
+      badge={{
+        percentage: 100,
+        status: 'normal',
+      }}
+      unit="единицы"
+      layout="full"
+      size="s"
+    />
+  )
+}
+```
