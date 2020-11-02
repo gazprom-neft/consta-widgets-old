@@ -63,15 +63,22 @@ import {
 Фон под графиком задается в `background`. Фон под линией — в [свойствах линии](#свойства-линии) (за него отвечает `withGradient`).
 
 <LinearChartExampleWithoutGradient />
+Фон под графиком задается в `background`.
+
+<LinearChartExampleGeneral />
 
 ```tsx
 <LinearChart
   title="Название графика"
   lines={
-    \\описание линии
+
+      // описание линии
+
   }
   gridConfig={
-    \\описание координатной сетки
+
+      // описание координатной сетки
+
   }
   isHorizontal
   unit="единицы"
