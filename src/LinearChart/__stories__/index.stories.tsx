@@ -8,7 +8,9 @@ import { withSmartKnobs } from 'storybook-addon-smart-knobs'
 
 import { createMetadata, createStory, optionalSelect } from '@/_private/storybook'
 
-import { axes, directionsX, directionsY, LinearChart } from '.'
+import { axes, directionsX, directionsY, LinearChart } from '..'
+
+import docs from './docs.mdx'
 
 const MIN = -2
 const MAX = 8
@@ -98,6 +100,9 @@ const decorators = [
 ] as const
 
 const parameters = {
+  docs: {
+    page: docs,
+  },
   environment: {
     style: {
       width: '60vw',
@@ -256,6 +261,9 @@ export const Vertical = createStory(
     name: 'вертикальный',
     decorators: [withSmartKnobs({ ignoreProps: IGNORE_PROPS })],
     parameters: {
+      docs: {
+        page: docs,
+      },
       environment: {
         style: {
           width: 300,
