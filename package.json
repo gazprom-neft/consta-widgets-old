@@ -83,7 +83,7 @@
     "@babel/cli": "7.10.5",
     "@babel/plugin-transform-react-jsx": "7.3.0",
     "@babel/preset-typescript": "7.10.4",
-    "@consta/widgets-configs": "1.4.0",
+    "@consta/widgets-configs": "1.4.2",
     "@mdx-js/loader": "1.5.9",
     "@storybook/addon-actions": "5.3.18",
     "@storybook/addon-docs": "5.3.18",

@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from 'react'
+import React, { useLayoutEffect, useMemo } from 'react'
 
 import { isNotNil } from '@consta/widgets-utils/lib/type-guards'
 import classnames from 'classnames'
@@ -148,46 +148,66 @@ export const Axis: React.FC<Props> = ({
   const showXGrid = Boolean(xGridTicks.length)
   const showYGrid = Boolean(yGridTicks.length)
 
-  const labelsAxis = [
-    {
-      getEl: () => xLabelsRef.current,
-      visible: Boolean(xLabelsPos),
-      direction: xOnBottom ? AxisDirections.bottom : AxisDirections.top,
-      scale: scaleX,
-      ticks: xLabelTicks,
-      classes: classnames(
-        css.labels,
-        css.isAxisX,
-        xLabelsPos &&
-          {
-            bottom: css.isPositionBottom,
-            top: css.isPositionTop,
-          }[xLabelsPos]
-      ),
-      transform: xOnBottom ? `translateY(${height}px)` : '',
-      values: isHorizontal ? mainLabelTickValues : secondaryLabelTickValues,
-      formatLabel: isHorizontal ? formatValueForLabel : defaultFormatLabel,
-    },
-    {
-      getEl: () => yLabelsRef.current,
-      visible: Boolean(yLabelsPos),
-      direction: yOnLeft ? AxisDirections.left : AxisDirections.right,
-      scale: scaleY,
-      ticks: yLabelTicks,
-      classes: classnames(
-        css.labels,
-        css.isAxisY,
-        yLabelsPos &&
-          {
-            left: css.isPositionLeft,
-            right: css.isPositionRight,
-          }[yLabelsPos]
-      ),
-      transform: yOnLeft ? '' : `translateX(${width}px)`,
-      values: isHorizontal ? secondaryLabelTickValues : mainLabelTickValues,
-      formatLabel: isHorizontal ? defaultFormatLabel : formatValueForLabel,
-    },
-  ] as const
+  const labelsAxis = useMemo(
+    () => [
+      {
+        getEl: () => xLabelsRef.current,
+        visible: Boolean(xLabelsPos),
+        direction: xOnBottom ? AxisDirections.bottom : AxisDirections.top,
+        scale: scaleX,
+        ticks: xLabelTicks,
+        classes: classnames(
+          css.labels,
+          css.isAxisX,
+          xLabelsPos &&
+            {
+              bottom: css.isPositionBottom,
+              top: css.isPositionTop,
+            }[xLabelsPos]
+        ),
+        transform: xOnBottom ? `translateY(${height}px)` : '',
+        values: isHorizontal ? mainLabelTickValues : secondaryLabelTickValues,
+        formatLabel: isHorizontal ? formatValueForLabel : defaultFormatLabel,
+      },
+      {
+        getEl: () => yLabelsRef.current,
+        visible: Boolean(yLabelsPos),
+        direction: yOnLeft ? AxisDirections.left : AxisDirections.right,
+        scale: scaleY,
+        ticks: yLabelTicks,
+        classes: classnames(
+          css.labels,
+          css.isAxisY,
+          yLabelsPos &&
+            {
+              left: css.isPositionLeft,
+              right: css.isPositionRight,
+            }[yLabelsPos]
+        ),
+        transform: yOnLeft ? '' : `translateX(${width}px)`,
+        values: isHorizontal ? secondaryLabelTickValues : mainLabelTickValues,
+        formatLabel: isHorizontal ? defaultFormatLabel : formatValueForLabel,
+      },
+    ],
+    [
+      formatValueForLabel,
+      height,
+      isHorizontal,
+      mainLabelTickValues,
+      scaleX,
+      scaleY,
+      secondaryLabelTickValues,
+      width,
+      xLabelTicks,
+      xLabelsPos,
+      xLabelsRef,
+      xOnBottom,
+      yLabelTicks,
+      yLabelsPos,
+      yLabelsRef,
+      yOnLeft,
+    ]
+  )
   const showXLabels = Boolean(labelsAxis[0].values.length)
   const showYLabels = Boolean(labelsAxis[1].values.length)
 
