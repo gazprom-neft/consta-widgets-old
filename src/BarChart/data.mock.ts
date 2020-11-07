@@ -69,3 +69,21 @@ export const withThreeColumnsData = {
   ],
   unit: 'тыс. м³',
 }
+
+export const groupExampleData = {
+  colors,
+  groups: [
+    {
+      groupName: 'первая группа',
+      values: [410, 115],
+    },
+    {
+      groupName: 'вторая группа',
+      values: [670, 210, 80],
+    },
+    {
+      groupName: 'третья группа',
+      values: [75],
+    },
+  ],
+}
