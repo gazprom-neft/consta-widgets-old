@@ -11,6 +11,7 @@ import {
   BackgroundBarChartExampleStart,
   BackgroundBarChartExampleEnd,
   BackgroundBarChartExampleHorizontal,
+  BackgroundBarChartExampleVertical,
   BackgroundBarChartExampleUnitLeft,
   BackgroundBarChartExampleUnitNone,
   BackgroundBarChartExampleUnitBottom,
@@ -192,12 +193,16 @@ formatValueForTooltip={v => `${v} дыщ`}
 Вы можете добавить полосу прокрутки с помощью свойства `withScroll`.  Она появится, если
 график не поместится по высоте в родительский контейнер. Работает только с горизонтальными
 диаграммами (`isHorizontal={true}`).
+По умолчанию график горизонтальный. Если вы укажете `isHorizontal={false}`,
+график повернется на 90 градусов вправо.
+
+<BackgroundBarChartExampleVertical />
 
 ### Единицы измерения
 
 За единицы измерения отвечает свойство `unit`.
 
-Вы можете расположить единицы измерения как удобно, за их расположение отвечает `unitPosition`.
+Вы можете расположить их как удобно, за расположение единиц отвечает `unitPosition`.
 Варианты: `left`, `bottom`, `left-and-bottom`, `none`.
 
 | `unitPosition="left"`                 | `unitPosition="bottom"`                 |
