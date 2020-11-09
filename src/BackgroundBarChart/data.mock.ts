@@ -63,3 +63,74 @@ export const groups: readonly Group[] = [
     isDisabled: true,
   },
 ]
+
+const valueNamesExample = ['Выросло', 'Съел колорадский жук'] as const
+const bgValueNamesExample = ['В плане', 'Посадили не то'] as const
+
+export const exampleData = {
+  threshold: { value: 20, color: 'var(--color-bg-alert)' },
+  unit: 'кг',
+}
+
+export const groupsExample: readonly Group[] = [
+  {
+    groupName: 'Картошка',
+    values: [{ value: 22, color: colors.normal, name: valueNamesExample[0] }],
+    backgroundValues: [{ value: 22, color: colors.normal, name: bgValueNamesExample[0] }],
+  },
+  {
+    groupName: 'Капуста',
+    values: [{ value: 3, color: colors.normal, name: valueNamesExample[0] }],
+    backgroundValues: [{ value: 25, color: colors.normal, name: bgValueNamesExample[0] }],
+  },
+  {
+    groupName: 'Морковка',
+    values: [
+      { value: 1, color: colors.normal, name: valueNamesExample[0] },
+      { value: 1, color: colors.alert, name: valueNamesExample[1] },
+    ],
+    backgroundValues: [{ value: 40, color: colors.normal, name: bgValueNamesExample[0] }],
+  },
+  {
+    groupName: 'Ананасы',
+    values: [{ value: 3, color: colors.stripesAlert, name: valueNamesExample[0] }],
+    backgroundValues: [
+      { value: 43, color: colors.normal, name: bgValueNamesExample[0] },
+      { value: 3, color: colors.alert, name: bgValueNamesExample[1] },
+    ],
+    isDisabled: true,
+  },
+]
+
+export const groupsPotatoExample: readonly Group[] = [
+  {
+    groupName: 'Картошка',
+    values: [{ value: 22, color: colors.normal, name: valueNamesExample[0] }],
+    backgroundValues: [{ value: 22, color: colors.normal, name: bgValueNamesExample[0] }],
+  },
+  {
+    groupName: 'Капуста',
+    values: [{ value: 3, color: colors.normal, name: valueNamesExample[0] }],
+    backgroundValues: [{ value: 25, color: colors.normal, name: bgValueNamesExample[0] }],
+  },
+  {
+    groupName: 'Морковка',
+    values: [
+      { value: 1, color: colors.normal, name: valueNamesExample[0] },
+      { value: 1, color: colors.alert, name: valueNamesExample[1] },
+    ],
+    backgroundValues: [{ value: 40, color: colors.normal, name: bgValueNamesExample[0] }],
+  },
+]
+
+export const groupsAnanasExample: readonly Group[] = [
+  {
+    groupName: 'Ананасы',
+    values: [{ value: 3, color: colors.stripesAlert, name: valueNamesExample[0] }],
+    backgroundValues: [
+      { value: 43, color: colors.normal, name: bgValueNamesExample[0] },
+      { value: 3, color: colors.alert, name: bgValueNamesExample[1] },
+    ],
+    isDisabled: true,
+  },
+]
