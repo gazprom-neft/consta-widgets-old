@@ -7,6 +7,8 @@ import { HalfDonut, halvesDonut } from '@/_private/components/DonutChart/compone
 import { createMetadata, createStory, optionalSelect } from '@/_private/storybook'
 import { Colors, ProgressDonut } from '@/ProgressDonut'
 
+import docs from './docs.mdx'
+
 const halfDonutSelect = (value?: HalfDonut) => optionalSelect('halfDonut', halvesDonut, value)
 
 const title = 'факт/план ПП'
@@ -106,6 +108,9 @@ export default createMetadata({
 
   decorators: [withSmartKnobs()],
   parameters: {
+    docs: {
+      page: docs,
+    },
     environment: {
       style: {
         backgroundColor: 'var(--color-control-bg-default)',
