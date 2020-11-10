@@ -12,14 +12,16 @@ import {
   optionalSelect,
 } from '@/_private/storybook'
 
-import { DonutChart } from '.'
+import { DonutChart } from '..'
 import {
   donutData,
   donutDataItemsWithZeroAndPositiveData,
   donutDataItemsWithZeroData,
   donutDataItemWithoutData,
   donutProgressData,
-} from './data.mock'
+} from '../data.mock'
+
+import docs from './docs.mdx'
 
 const halfDonutSelect = (value?: HalfDonut) => optionalSelect('halfDonut', halvesDonut, value)
 
@@ -185,6 +187,9 @@ export default createMetadata({
   decorators: [withSmartKnobs()],
   excludeStories: ['progressDonutData'],
   parameters: {
+    docs: {
+      page: docs,
+    },
     environment: {
       style: {
         width: 200,
