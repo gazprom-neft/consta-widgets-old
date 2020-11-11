@@ -156,9 +156,9 @@
     position: absolute;
     z-index: var(--z-date-sub-bg);
     top: 0;
-    right: calc(var(--cell-bg-side-offset) * -1);
+    right: calc(-1 * var(--cell-bg-side-offset));
     bottom: 0;
-    left: calc(var(--cell-bg-side-offset) * -1);
+    left: calc(-1 * var(--cell-bg-side-offset));
 
     content: '';
 
@@ -233,7 +233,7 @@
   }
 
   :--isRange:--isHighlighted:--isFirstDate:not(:--isSelectedBackwards) &::before {
-    right: calc(var(--cell-bg-side-offset) * -1);
+    right: calc(-1 * var(--cell-bg-side-offset));
 
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
