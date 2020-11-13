@@ -7,8 +7,10 @@ import { withSmartKnobs } from 'storybook-addon-smart-knobs'
 import { unitPositions } from '@/_private/components/BarChart'
 import { createMetadata, createStory } from '@/_private/storybook'
 
-import { MultiBarChart } from './'
-import { interactiveData, withPercentColumnsData, withTwoColumnsData } from './data.mock'
+import { MultiBarChart } from '..'
+import { interactiveData, withPercentColumnsData, withTwoColumnsData } from '../data.mock'
+
+import docs from './docs.mdx'
 
 const getCommonProps = (initialUnit: string) => {
   const unit = text('unit', initialUnit)
@@ -98,6 +100,9 @@ export default createMetadata({
   title: 'components/MultiBarChart',
   decorators: [withSmartKnobs({ ignoreProps: ['title'] })],
   parameters: {
+    docs: {
+      page: docs,
+    },
     environment: { style: { width: '60vw', height: '80vh' } },
   },
 })
