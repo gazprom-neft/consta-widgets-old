@@ -31,13 +31,3 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_GITHUB_REGISTRY_TOKEN }}
       - name: Сборка пакета build
         run: yarn build
-      - name: Сборка пакета build:css
-        run: yarn build:css
-      - name: Сборка пакета build:js
-        run: yarn build:js
-      - name: Сборка пакета build:types
-        run: yarn build:types
-      - name: Сборка пакета build:package
-        run: yarn build:package.json
-      - name: Сборка пакета build:docs
-        run: yarn build:docs
