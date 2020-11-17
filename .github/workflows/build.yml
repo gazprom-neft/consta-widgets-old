@@ -29,5 +29,5 @@ jobs:
         run: yarn --frozen-lockfile
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_GITHUB_REGISTRY_TOKEN }}
-      - name: Сборка пакета build
-        run: yarn build
+      - name: Debugging with tmate
+        uses: mxschmitt/action-tmate@v3.1
