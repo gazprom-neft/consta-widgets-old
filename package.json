@@ -23,7 +23,11 @@
     "unit:watch": "yarn unit --watchAll",
     "test": "npm-run-all --parallel lint checktypes unit",
     "prepare": "yarn install-peers",
-    "danger-ci": "danger ci"
+    "danger-ci": "danger ci",
+    "build-first": "rm -rf lib && yarn generate-css-types && run-s build:types build:package.json build:docs",
+    "build-second": "run-s build:css",
+    "build-third": "run-s build:js",
+    "build-fourth": "yarn build:js"
   },
   "publishConfig": {
     "access": "public"
