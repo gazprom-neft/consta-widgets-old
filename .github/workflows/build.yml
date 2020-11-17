@@ -29,11 +29,15 @@ jobs:
         run: yarn --frozen-lockfile
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_GITHUB_REGISTRY_TOKEN }}
-      - name: Сборка пакета 1
-        run: yarn build-first
-      - name: Сборка пакета 2
-        run: yarn build-second
-      - name: Сборка пакета 3
-        run: yarn build-third
-      - name: Сборка пакета 4
-        run: yarn build-fourth
+      - name: Сборка пакета build
+        run: yarn build
+      - name: Сборка пакета build:css
+        run: yarn build:css
+      - name: Сборка пакета build:js
+        run: yarn build:js
+      - name: Сборка пакета build:types
+        run: yarn build:types
+      - name: Сборка пакета build:package
+        run: yarn build:package.json
+      - name: Сборка пакета build:docs
+        run: yarn build:docs
