@@ -2,9 +2,9 @@
   "name": "@consta/widgets",
   "version": "3.3.2",
   "scripts": {
-    "build": "rm -rf lib && yarn generate-css-types && npm-run-all build:js",
+    "build": "rm -rf lib && yarn generate-css-types && npm-run-all build:*",
     "build:css": "NODE_ENV=production postcss 'src/**/*.css' --base src --dir lib",
-    "build:js": "babel src --out-dir lib --extensions '.ts,.tsx'",
+    "build:js": "NODE_ENV=production BUILDING_JS=true babel src --out-dir lib --extensions ‘.ts,.tsx’ --source-maps",
     "build:types": "NODE_ENV=production ttsc --declaration --outDir lib/ --emitDeclarationOnly -p tsconfig.build.json",
     "build:package.json": "node scripts/prepare-package-json.js",
     "build:docs": "cp README.md lib/README.md",
