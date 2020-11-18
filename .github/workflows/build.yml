@@ -1,24 +1,27 @@
-name: Тесты и деплой
+name: Тесты
 on:
+  push:
+    branches: master
   pull_request:
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [12.x]
     steps:
+      - uses: rokroskar/workflow-run-cleanup-action@v0.2.2
+        if: "!startsWith(github.ref, 'refs/tags/') && github.ref != 'refs/heads/master'"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
           node-version: 12
-          registry-url: 'https://npm.pkg.github.com'
+
       - name: Установка yarn
         id: yarn-setup
         run: |
-          yarn policies set-version 1.22.1
+          yarn policies set-version 1.19.1
           echo "::set-output name=cache_dir::$(yarn cache dir)"
-      - name: Настройка кэширования зависимостей
+      - name: Настройка кэширования yarn
         uses: actions/cache@v2
         with:
           path: ${{ steps.yarn-setup.outputs.cache_dir }}
@@ -27,7 +30,6 @@ jobs:
             ${{ runner.os }}-yarn-
       - name: Установка зависимостей
         run: yarn --frozen-lockfile
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_GITHUB_REGISTRY_TOKEN }}
-      - name: Сборка пакета build
-        run: yarn build
+      - name: Тесты
+        run: yarn test
+
