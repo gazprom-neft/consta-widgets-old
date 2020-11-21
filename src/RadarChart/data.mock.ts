@@ -82,3 +82,84 @@ export const figures: readonly Figure[] = [
     ],
   },
 ]
+
+export const axesLabelsExample = {
+  strength: 'Сила',
+  endurance: 'Выносливость',
+  speed: 'Скорость',
+  agility: 'Ловкость',
+  persistence: 'Упорство',
+  charisma: 'Харизма',
+  intelligence: 'Ум',
+  kindness: 'Доброта',
+  coolness: 'Симпатичность',
+}
+
+export const figuresExample: readonly Figure[] = [
+  {
+    color: colors.mainCharacter,
+    name: 'Чебурашка',
+    values: [
+      { axisName: 'strength', value: 2 },
+      { axisName: 'endurance', value: 9 },
+      { axisName: 'speed', value: 3 },
+      { axisName: 'agility', value: 4 },
+      { axisName: 'persistence', value: 9 },
+      { axisName: 'charisma', value: 9 },
+      { axisName: 'intelligence', value: 5 },
+      { axisName: 'kindness', value: 9 },
+      { axisName: 'coolness', value: 8 },
+    ],
+  },
+  {
+    color: colors.partyMember,
+    name: 'Шапокляк',
+    values: [
+      { axisName: 'strength', value: 10 },
+      { axisName: 'endurance', value: 2 },
+      { axisName: 'speed', value: 7 },
+      { axisName: 'agility', value: 9 },
+      { axisName: 'persistence', value: 5 },
+      { axisName: 'charisma', value: 2 },
+      { axisName: 'intelligence', value: 5 },
+      { axisName: 'kindness', value: 1 },
+      { axisName: 'coolness', value: 2 },
+    ],
+  },
+]
+
+export const figuresExampleCheb: readonly Figure[] = [
+  {
+    color: colors.mainCharacter,
+    name: 'Чебурашка',
+    values: [
+      { axisName: 'strength', value: 2 },
+      { axisName: 'endurance', value: 9 },
+      { axisName: 'speed', value: 3 },
+      { axisName: 'agility', value: 4 },
+      { axisName: 'persistence', value: 9 },
+      { axisName: 'charisma', value: 9 },
+      { axisName: 'intelligence', value: 5 },
+      { axisName: 'kindness', value: 9 },
+      { axisName: 'coolness', value: 8 },
+    ],
+  },
+]
+
+export const figuresExampleChebNull: readonly Figure[] = [
+  {
+    color: colors.mainCharacter,
+    name: 'Чебурашка',
+    values: [
+      { axisName: 'strength', value: 2 },
+      { axisName: 'endurance', value: 9 },
+      { axisName: 'speed', value: null },
+      { axisName: 'agility', value: 4 },
+      { axisName: 'persistence', value: 9 },
+      { axisName: 'charisma', value: null },
+      { axisName: 'intelligence', value: 5 },
+      { axisName: 'kindness', value: 9 },
+      { axisName: 'coolness', value: 8 },
+    ],
+  },
+]
