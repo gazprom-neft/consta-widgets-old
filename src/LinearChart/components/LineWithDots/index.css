@@ -9,3 +9,15 @@
     stroke: var(--color-bg-default);
   }
 }
+
+.label {
+  font-size: var(--size-text-xs);
+
+  fill: var(--color-typo-secondary);
+
+  transform: translate(var(--axis-tick-offset), calc(var(--size-text-xs) / 3));
+
+  &.isHorizontal {
+    transform: translateY(calc(-1 * var(--axis-tick-offset)));
+  }
+}

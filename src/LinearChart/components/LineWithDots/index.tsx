@@ -50,6 +50,7 @@ type Props = {
   scaleY: ScaleLinear
   hoveredMainValue: HoveredMainValue
   isHorizontal: boolean
+  showValues?: boolean
 } & GradientProps &
   BoundariesProps
 
@@ -71,6 +72,7 @@ export const LineWithDots: React.FC<Props> = props => {
     dotsClipPath,
     hoveredMainValue,
     isHorizontal,
+    showValues,
   } = props
 
   return (
@@ -128,6 +130,23 @@ export const LineWithDots: React.FC<Props> = props => {
           )
         })}
       </g>
+      {showValues && (
+        <g>
+          {values.filter(itemIsNotEmpty).map((item, idx) => {
+            return (
+              <text
+                key={idx}
+                x={scaleX(item.x)}
+                y={scaleY(item.y)}
+                className={classnames(css.label, isHorizontal && css.isHorizontal)}
+                text-anchor="middle"
+              >
+                {isHorizontal ? item.y : item.x}
+              </text>
+            )
+          })}
+        </g>
+      )}
     </g>
   )
 }

@@ -337,6 +337,47 @@ export const WithBoundaries = createStory(
   { name: 'с лимитами', decorators, parameters }
 )
 
+export const WithValueLabels = createStory(
+  () => {
+    return (
+      <LinearChart
+        {...getDirectionKnobs()}
+        gridConfig={getGridConfig()}
+        lines={[
+          {
+            values: [
+              { x: 0, y: -1 },
+              { x: 1, y: 3 },
+              { x: 2, y: 1 },
+              { x: 3, y: 4 },
+            ],
+            lineName: 'Северный бур',
+            color: colors.first,
+            showValues: true,
+          },
+          {
+            values: [
+              { x: 0, y: -2 },
+              { x: 1, y: 4 },
+              { x: 2, y: 0 },
+              { x: 3, y: 5 },
+            ],
+            lineName: 'Южное месторождение',
+            color: colors.second,
+            showValues: true,
+          },
+        ]}
+        isHorizontal
+      />
+    )
+  },
+  {
+    name: 'со значениями точек',
+    decorators,
+    parameters,
+  }
+)
+
 export default createMetadata({
   title: 'components/LinearChart',
 })
