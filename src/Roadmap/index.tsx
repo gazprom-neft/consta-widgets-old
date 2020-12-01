@@ -6,6 +6,7 @@ import { Table, TableColumn, TableFilters, TableRow } from '@consta/uikit/Table'
 import { isDefined } from '@consta/widgets-utils/lib/type-guards'
 import classnames from 'classnames'
 
+import { Title } from '@/_private/components/Title'
 import { MonthsTitles } from '@/Roadmap/components/MonthsTitles'
 
 import { GroupLines } from './components/GroupLines'
@@ -37,6 +38,7 @@ export type Props = {
   startDate: number
   endDate: number
   filters?: TableFilters<TableRow>
+  title?: React.ReactNode
 }
 
 type ActiveRowState = {
@@ -58,6 +60,7 @@ export const Roadmap: React.FC<Props> = ({
   startDate,
   endDate,
   filters,
+  title,
 }) => {
   const firstMonthRef = React.useRef(null)
   const { width: monthWidth } = useComponentSize(firstMonthRef)
@@ -147,6 +150,7 @@ export const Roadmap: React.FC<Props> = ({
 
   return (
     <div className={css.main}>
+      <Title>{title}</Title>
       <Table<TableRow>
         columns={mutableTableColumns}
         rows={tableRows}

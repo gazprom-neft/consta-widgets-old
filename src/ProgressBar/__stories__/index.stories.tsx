@@ -1,6 +1,7 @@
 import React from 'react'
 
-import { object } from '@storybook/addon-knobs'
+import { Text } from '@consta/uikit/Text'
+import { object, text } from '@storybook/addon-knobs'
 import { withSmartKnobs } from 'storybook-addon-smart-knobs'
 
 import { createMetadata, createStory } from '@/_private/storybook'
@@ -27,9 +28,28 @@ export const WithoutData = createStory(
   }
 )
 
+export const WithTitle = createStory(
+  () => {
+    const data = object('data', progressBarData.data).map(convertItemToDataItem)
+
+    return (
+      <ProgressBar
+        data={data}
+        size="m"
+        title={
+          <Text as="div" view="primary" size="m">
+            {text('title', 'Заголовок')}
+          </Text>
+        }
+      />
+    )
+  },
+  { name: 'с заголовком' }
+)
+
 export default createMetadata({
   title: 'components/ProgressBar',
-  decorators: [withSmartKnobs({ ignoreProps: ['data'] })],
+  decorators: [withSmartKnobs({ ignoreProps: ['data', 'title'] })],
   parameters: {
     docs: {
       page: docs,

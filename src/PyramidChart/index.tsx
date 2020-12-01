@@ -3,6 +3,8 @@ import React from 'react'
 import { Text } from '@consta/uikit/Text'
 import { isNotNil } from '@consta/widgets-utils/lib/type-guards'
 
+import { Title } from '@/_private/components/Title'
+
 import css from './index.css'
 
 export type Data = {
@@ -15,6 +17,7 @@ type Props = {
   colors: readonly string[]
   constraint?: boolean
   fontSize?: 'xs' | 's' | 'm'
+  title?: React.ReactNode
 }
 
 export const DEFAULT_COLORS = [
@@ -76,6 +79,7 @@ export const PyramidChart: React.FC<Props> = ({
   colors,
   constraint = true,
   fontSize = 's',
+  title,
 }) => {
   const containerHeightResponsive = data.length * SECTION_HEIGHT
   const pyramidWidthHalf = PYRAMID_WIDTH / 2
@@ -92,6 +96,7 @@ export const PyramidChart: React.FC<Props> = ({
 
   return (
     <div className={css.main}>
+      <Title>{title}</Title>
       <div
         className={css.svgWrapper}
         style={{ width: PYRAMID_WIDTH, height: containerHeightResponsive }}

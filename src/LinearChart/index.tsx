@@ -5,6 +5,7 @@ import { isNotNil } from '@consta/widgets-utils/lib/type-guards'
 import * as d3 from 'd3'
 import * as _ from 'lodash'
 
+import { Title } from '@/_private/components/Title'
 import { FormatValue } from '@/_private/types'
 import { getEveryN } from '@/_private/utils/array'
 
@@ -260,11 +261,7 @@ export class LinearChart extends React.Component<Props, State> {
             ? { boundaries: props.boundaries, boundariesAxis: props.boundariesAxis }
             : {})}
         />
-        {title && (
-          <div className={css.title} style={{ paddingLeft: paddingX }}>
-            {title}
-          </div>
-        )}
+        <Title style={{ paddingLeft: paddingX }}>{title}</Title>
         <div ref={this.ref} className={css.graph}>
           <svg
             ref={this.svgWrapperRef}

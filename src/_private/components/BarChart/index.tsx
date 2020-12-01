@@ -9,6 +9,8 @@ import { FormatValue } from '@/_private/types'
 import { NumberRange, scaleLinear } from '@/_private/utils/scale'
 import { getTicks } from '@/_private/utils/ticks'
 
+import { Title } from '../Title'
+
 import { ColumnSize } from './components/Column'
 import { Threshold } from './components/Threshold'
 import { Position, Size as TicksSize } from './components/Ticks'
@@ -296,11 +298,7 @@ export const CoreBarChart = <T,>(props: Props<T>) => {
    */
   return (
     <div className={css.wrapper}>
-      {title && (
-        <div className={css.title} style={{ paddingLeft: gridStyle.left }}>
-          {title}
-        </div>
-      )}
+      <Title style={{ paddingLeft: gridStyle.left }}>{title}</Title>
       <div className={classnames(css.main, withScroll && isHorizontal && css.withVerticalScroll)}>
         {isHorizontal && axisShowPositions.top && renderHorizontal('top')}
         <div

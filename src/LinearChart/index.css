@@ -10,10 +10,6 @@
   min-height: 90px;
 }
 
-.title {
-  padding-bottom: var(--space-s);
-}
-
 .graph {
   position: relative;
 

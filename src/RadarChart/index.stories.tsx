@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { Text } from '@consta/uikit/Text'
 import { number, object, select, text } from '@storybook/addon-knobs'
 import { withSmartKnobs } from 'storybook-addon-smart-knobs'
 
@@ -42,12 +43,12 @@ const getFormattersForTooltip = () => {
   return formatter ? formatter() : undefined
 }
 
-const decorators = [withSmartKnobs({ ignoreProps: ['backgroundColor'] })] as const
+const decorators = [withSmartKnobs({ ignoreProps: ['backgroundColor', 'title'] })] as const
 
 const parameters = {
   environment: {
     style: {
-      width: '80vw',
+      width: '550px',
       height: '80vh',
     },
   },
@@ -180,6 +181,27 @@ export const FontSizeReduction = createStory(
   }
 )
 
+export const WithTitle = createStory(
+  () => (
+    <RadarChart
+      axesLabels={object('axesLabels', axesLabels)}
+      maxValue={10}
+      figures={figures}
+      ticks={4}
+      backgroundColor="var(--color-bg-default)"
+      formatValueForLabel={getFormattersForLabel()}
+      formatValueForTooltip={getFormattersForTooltip()}
+      withConcentricColor={false}
+      labelSize="s"
+      title={
+        <Text as="div" view="primary" size="m">
+          {text('title', 'Заголовок')}
+        </Text>
+      }
+    />
+  ),
+  { name: 'с заголовком', decorators, parameters }
+)
 export default createMetadata({
   title: 'components/RadarChart',
 })

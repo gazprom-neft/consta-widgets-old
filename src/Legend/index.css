@@ -10,6 +10,10 @@
   }
 }
 
+.title {
+  padding-left: var(--item-padding-x);
+}
+
 .item {
   padding: var(--item-padding-y) var(--item-padding-x);
 

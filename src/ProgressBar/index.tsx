@@ -4,6 +4,7 @@ import { Text, TextPropSize } from '@consta/uikit/Text'
 import { isNotNil } from '@consta/widgets-utils/lib/type-guards'
 import classnames from 'classnames'
 
+import { Title } from '@/_private/components/Title'
 import { Legend, Tick } from '@/ProgressBar/components/Legend'
 
 import { Data as ProgressData, Progress } from './components/Progress'
@@ -21,6 +22,7 @@ export type Size = 'xs' | 's' | 'm' | 'l'
 type Props = {
   size?: Size
   data: readonly Data[]
+  title?: React.ReactNode
 }
 
 export const getValueRatio = ({
@@ -42,42 +44,45 @@ const summarySizes: Record<Size, TextPropSize> = {
   l: '2xl',
 }
 
-export const ProgressBar: React.FC<Props> = ({ size = 'm', data }) => {
+export const ProgressBar: React.FC<Props> = ({ size = 'm', data, title }) => {
   return (
-    <div className={classnames(css.progressBar, size === 'xs' && css.sizeXS)}>
-      {data.map((dataItem, i) => {
-        const { caption, color, value, summary, ticks = [], valueMin, valueMax } = dataItem
+    <div>
+      <Title>{title}</Title>
+      <div className={classnames(css.progressBar, size === 'xs' && css.sizeXS)}>
+        {data.map((dataItem, i) => {
+          const { caption, color, value, summary, ticks = [], valueMin, valueMax } = dataItem
 
-        return (
-          <div className={css.item} key={i}>
-            {caption && (
-              <div className={css.row}>
-                <div className={classnames(css.cell, css.isTitleCell)}>{caption}</div>
-              </div>
-            )}
-
-            <div className={css.row}>
-              <div className={classnames(css.cell, css.isProgressCell)}>
-                <Progress data={dataItem} color={color} size={size} />
-              </div>
-              <div className={classnames(css.cell, css.isValueCell)} style={{ color }}>
-                <Text as="div" size={summarySizes[size]} className={css.cellText}>
-                  {isNotNil(value) ? summary : '–'}
-                </Text>
-              </div>
-            </div>
-
-            {ticks.length ? (
-              <div className={css.row}>
-                <div className={classnames(css.cell, css.isTicksCell)}>
-                  <Legend ticks={ticks} valueMin={valueMin} valueMax={valueMax} />
+          return (
+            <div className={css.item} key={i}>
+              {caption && (
+                <div className={css.row}>
+                  <div className={classnames(css.cell, css.isTitleCell)}>{caption}</div>
                 </div>
-                <div className={css.cell} />
+              )}
+
+              <div className={css.row}>
+                <div className={classnames(css.cell, css.isProgressCell)}>
+                  <Progress data={dataItem} color={color} size={size} />
+                </div>
+                <div className={classnames(css.cell, css.isValueCell)} style={{ color }}>
+                  <Text as="div" size={summarySizes[size]} className={css.cellText}>
+                    {isNotNil(value) ? summary : '–'}
+                  </Text>
+                </div>
               </div>
-            ) : null}
-          </div>
-        )
-      })}
+
+              {ticks.length ? (
+                <div className={css.row}>
+                  <div className={classnames(css.cell, css.isTicksCell)}>
+                    <Legend ticks={ticks} valueMin={valueMin} valueMax={valueMax} />
+                  </div>
+                  <div className={css.cell} />
+                </div>
+              ) : null}
+            </div>
+          )
+        })}
+      </div>
     </div>
   )
 }

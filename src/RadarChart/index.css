@@ -8,6 +8,11 @@
   min-height: 250px;
 }
 
+.wrapper {
+  width: 100%;
+  height: 100%;
+}
+
 .svgWrapper {
   position: relative;
 }

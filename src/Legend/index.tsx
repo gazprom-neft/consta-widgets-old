@@ -2,6 +2,7 @@ import React from 'react'
 
 import classnames from 'classnames'
 
+import { Title } from '@/_private/components/Title'
 import { LabelPosition, LabelType, LegendItem, Size } from '@/LegendItem'
 
 import css from './index.css'
@@ -22,6 +23,7 @@ type Props = {
   fontSize: Size
   labelPosition: LabelPosition
   lineBold?: boolean
+  title?: React.ReactNode
   onItemMouseEnter?: (item: Item) => void
   onItemMouseLeave?: (item: Item) => void
 }
@@ -33,6 +35,7 @@ export const Legend: React.FC<Props> = ({
   labelPosition,
   lineBold,
   fontSize,
+  title,
   onItemMouseEnter,
   onItemMouseLeave,
 }) => {
@@ -44,6 +47,7 @@ export const Legend: React.FC<Props> = ({
         direction === 'column' && css.column
       )}
     >
+      <Title className={css.title}>{title}</Title>
       {data.map(item => (
         <LegendItem
           color={item.color}

@@ -7,6 +7,8 @@ import { IconArrowRight } from '@consta/uikit/IconArrowRight'
 import classnames from 'classnames'
 import * as _ from 'lodash'
 
+import { Title } from '@/_private/components/Title'
+
 import css from './index.css'
 
 export type ImageItem = {
@@ -17,10 +19,11 @@ export type ImageItem = {
 type Props = {
   images: readonly ImageItem[]
   activeItem?: number
+  title?: React.ReactNode
   onClick: (idx: number) => void
 }
 
-export const ImagesList: React.FC<Props> = ({ images, activeItem, onClick }) => {
+export const ImagesList: React.FC<Props> = ({ images, activeItem, title, onClick }) => {
   const wrapperRef = useRef<HTMLDivElement>(null)
   const listRef = useRef<HTMLDivElement>(null)
   const { width: wrapperWidth } = useComponentSize(wrapperRef)
@@ -46,49 +49,52 @@ export const ImagesList: React.FC<Props> = ({ images, activeItem, onClick }) => 
   }
 
   return (
-    <div className={css.main}>
-      {offset > 0 && (
-        <Button
-          size="s"
-          onlyIcon
-          iconLeft={IconArrowLeft}
-          iconSize="s"
-          className={classnames(css.button, css.toLeft)}
-          onClick={handleMove('left')}
-          view="ghost"
-        />
-      )}
-      <div className={css.wrapper} ref={wrapperRef}>
-        <div
-          ref={listRef}
-          className={css.list}
-          style={{
-            transform: `translateX(-${offset}px)`,
-          }}
-        >
-          {images.map((image, idx) => (
-            <button
-              key={idx}
-              type="button"
-              className={classnames(css.item, idx === activeItem && css.isActive)}
-              onClick={() => onClick(idx)}
-            >
-              <img src={image.preview || image.large} className={css.image} />
-            </button>
-          ))}
+    <div>
+      <Title>{title}</Title>
+      <div className={css.main}>
+        {offset > 0 && (
+          <Button
+            size="s"
+            onlyIcon
+            iconLeft={IconArrowLeft}
+            iconSize="s"
+            className={classnames(css.button, css.toLeft)}
+            onClick={handleMove('left')}
+            view="ghost"
+          />
+        )}
+        <div className={css.wrapper} ref={wrapperRef}>
+          <div
+            ref={listRef}
+            className={css.list}
+            style={{
+              transform: `translateX(-${offset}px)`,
+            }}
+          >
+            {images.map((image, idx) => (
+              <button
+                key={idx}
+                type="button"
+                className={classnames(css.item, idx === activeItem && css.isActive)}
+                onClick={() => onClick(idx)}
+              >
+                <img src={image.preview || image.large} className={css.image} />
+              </button>
+            ))}
+          </div>
         </div>
+        {offset + wrapperWidth < scrollWidth && (
+          <Button
+            size="s"
+            onlyIcon
+            iconLeft={IconArrowRight}
+            iconSize="s"
+            className={classnames(css.button, css.toRight)}
+            onClick={handleMove('right')}
+            view="ghost"
+          />
+        )}
       </div>
-      {offset + wrapperWidth < scrollWidth && (
-        <Button
-          size="s"
-          onlyIcon
-          iconLeft={IconArrowRight}
-          iconSize="s"
-          className={classnames(css.button, css.toRight)}
-          onClick={handleMove('right')}
-          view="ghost"
-        />
-      )}
     </div>
   )
 }

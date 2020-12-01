@@ -5,6 +5,7 @@ import { useComponentSize } from '@consta/uikit/useComponentSize'
 import { isDefined, isNotNil } from '@consta/widgets-utils/lib/type-guards'
 import * as _ from 'lodash'
 
+import { Title } from '@/_private/components/Title'
 import { FormatValue } from '@/_private/types'
 import { getFormattedValue } from '@/_private/utils/chart'
 import { deg2rad } from '@/_private/utils/math'
@@ -59,6 +60,7 @@ type Props = {
   backgroundColor: string
   withConcentricColor: boolean
   labelSize: RadarChartLabelSize
+  title?: React.ReactNode
 } & Data
 
 export type Axis = {
@@ -183,6 +185,7 @@ export const RadarChart: React.FC<Props> = ({
   formatValueForLabel,
   formatValueForTooltip,
   withConcentricColor,
+  title,
 }) => {
   // В радаре с градиентом может быть только 1 фигура и 3-5 колец
   const ticks = withConcentricColor ? _.clamp(originalTicks, 3, 5) : originalTicks
@@ -252,87 +255,90 @@ export const RadarChart: React.FC<Props> = ({
   })
 
   return (
-    <div ref={ref} className={css.main}>
-      {radarSize > 0 && (
-        <div
-          ref={svgWrapperRef}
-          className={css.svgWrapper}
-          style={{
-            width: radarSize,
-            height: radarSize,
-          }}
-        >
-          <svg viewBox={`0 0 ${radarSize} ${radarSize}`} className={css.svg}>
-            {concentricColors && (
-              <defs>
-                <radialGradient id={gradientId} gradientUnits="userSpaceOnUse">
-                  {concentricColors.gradient.map(([color, offset], idx) => (
-                    <stop key={idx} offset={`${offset}%`} stopColor={color} />
-                  ))}
-                </radialGradient>
-              </defs>
-            )}
+    <div className={css.wrapper}>
+      <Title>{title}</Title>
+      <div ref={ref} className={css.main}>
+        {radarSize > 0 && (
+          <div
+            ref={svgWrapperRef}
+            className={css.svgWrapper}
+            style={{
+              width: radarSize,
+              height: radarSize,
+            }}
+          >
+            <svg viewBox={`0 0 ${radarSize} ${radarSize}`} className={css.svg}>
+              {concentricColors && (
+                <defs>
+                  <radialGradient id={gradientId} gradientUnits="userSpaceOnUse">
+                    {concentricColors.gradient.map(([color, offset], idx) => (
+                      <stop key={idx} offset={`${offset}%`} stopColor={color} />
+                    ))}
+                  </radialGradient>
+                </defs>
+              )}
 
-            <RadarChartAxes
-              ticks={ticks}
-              maxValue={maxValue}
-              backgroundColor={backgroundColor}
-              axesAngles={axesAngles}
-              labelSize={labelSize}
-              formatValueForLabel={formatValueForLabel}
-              colors={concentricColors && concentricColors.circles}
-              activeAxis={activeAxis}
-              onChangeActiveAxis={setActiveAxis}
-            />
-
-            {extendedFigures.map((f, idx) => (
-              <RadarChartFigure
-                key={idx}
-                size={radarSize}
-                points={f.points}
-                lineColor={f.color}
-                withFill={f.isFilled}
-              />
-            ))}
-
-            {extendedFigures.map((f, idx) => (
-              <RadarChartPoints
-                key={idx}
-                points={f.points}
-                lineColor={f.color}
-                activeAxis={activeAxis ? activeAxis.name : ''}
+              <RadarChartAxes
+                ticks={ticks}
+                maxValue={maxValue}
                 backgroundColor={backgroundColor}
+                axesAngles={axesAngles}
+                labelSize={labelSize}
+                formatValueForLabel={formatValueForLabel}
+                colors={concentricColors && concentricColors.circles}
+                activeAxis={activeAxis}
+                onChangeActiveAxis={setActiveAxis}
               />
-            ))}
-          </svg>
 
-          {axesAngles.map(axis => {
-            const { xPercent, yPercent } = angleToCoord(axis.angle, 1)
+              {extendedFigures.map((f, idx) => (
+                <RadarChartFigure
+                  key={idx}
+                  size={radarSize}
+                  points={f.points}
+                  lineColor={f.color}
+                  withFill={f.isFilled}
+                />
+              ))}
 
-            return (
-              <RadarChartAxisName
-                key={axis.name}
-                xPercent={xPercent}
-                yPercent={yPercent}
-                label={axis.label}
-                fontSize={fontSize}
-                lineHeight={lineHeight}
-                width={axisNameWidth}
-                offset={axisNameOffset}
+              {extendedFigures.map((f, idx) => (
+                <RadarChartPoints
+                  key={idx}
+                  points={f.points}
+                  lineColor={f.color}
+                  activeAxis={activeAxis ? activeAxis.name : ''}
+                  backgroundColor={backgroundColor}
+                />
+              ))}
+            </svg>
+
+            {axesAngles.map(axis => {
+              const { xPercent, yPercent } = angleToCoord(axis.angle, 1)
+
+              return (
+                <RadarChartAxisName
+                  key={axis.name}
+                  xPercent={xPercent}
+                  yPercent={yPercent}
+                  label={axis.label}
+                  fontSize={fontSize}
+                  lineHeight={lineHeight}
+                  width={axisNameWidth}
+                  offset={axisNameOffset}
+                />
+              )
+            })}
+
+            {svgWrapperRef.current && activeAxis && (
+              <AxisTooltip
+                extendedFigures={extendedFigures}
+                axis={activeAxis}
+                anchorEl={svgWrapperRef.current}
+                formatValue={formatValueForTooltip || formatValueForLabel}
               />
-            )
-          })}
-
-          {svgWrapperRef.current && activeAxis && (
-            <AxisTooltip
-              extendedFigures={extendedFigures}
-              axis={activeAxis}
-              anchorEl={svgWrapperRef.current}
-              formatValue={formatValueForTooltip || formatValueForLabel}
-            />
-          )}
-        </div>
-      )}
+            )}
+          </div>
+        )}
+      </div>
     </div>
   )
 }

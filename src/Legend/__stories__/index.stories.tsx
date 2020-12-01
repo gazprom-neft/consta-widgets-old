@@ -1,7 +1,8 @@
 import React from 'react'
 
+import { Text } from '@consta/uikit/Text'
 import { action } from '@storybook/addon-actions'
-import { boolean, object, select } from '@storybook/addon-knobs'
+import { boolean, object, select, text } from '@storybook/addon-knobs'
 
 import { createMetadata, createStory } from '@/_private/storybook'
 import { labelPositions, labelTypes, sizes } from '@/LegendItem'
@@ -59,6 +60,23 @@ export const WithChart = createStory(
         },
       },
     },
+  }
+)
+
+export const WithTitle = createStory(
+  () => (
+    <Legend
+      {...getCommonProps()}
+      data={object('data', interactiveData)}
+      title={
+        <Text as="div" view="primary" size="m">
+          {text('title', 'Заголовок')}
+        </Text>
+      }
+    />
+  ),
+  {
+    name: 'с заголовком',
   }
 )
 
