@@ -342,7 +342,22 @@ export const WithValueLabels = createStory(
     return (
       <LinearChart
         {...getDirectionKnobs()}
-        gridConfig={getGridConfig()}
+        gridConfig={object('gridConfig', {
+          x: {
+            labels: 'bottom',
+            labelTicks: 1,
+            gridTicks: 10,
+            guide: true,
+            withPaddings: true,
+          },
+          y: {
+            labels: 'left',
+            labelTicks: 1,
+            gridTicks: 4,
+            guide: true,
+            withPaddings: true,
+          },
+        } as const)}
         lines={[
           {
             values: [

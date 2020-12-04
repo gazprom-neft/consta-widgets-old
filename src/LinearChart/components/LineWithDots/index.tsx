@@ -131,7 +131,7 @@ export const LineWithDots: React.FC<Props> = props => {
         })}
       </g>
       {showValues && (
-        <g>
+        <g clipPath={dotsClipPath}>
           {values.filter(itemIsNotEmpty).map((item, idx) => {
             return (
               <text
@@ -139,7 +139,7 @@ export const LineWithDots: React.FC<Props> = props => {
                 x={scaleX(item.x)}
                 y={scaleY(item.y)}
                 className={classnames(css.label, isHorizontal && css.isHorizontal)}
-                text-anchor="middle"
+                text-anchor={isHorizontal ? 'middle' : 'start'}
               >
                 {isHorizontal ? item.y : item.x}
               </text>
