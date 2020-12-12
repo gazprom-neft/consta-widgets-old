@@ -15,6 +15,7 @@ import {
   LinearChartExampleFormatLabel,
   LinearChartExampleZoom,
   LinearChartExampleThreshold,
+  LinearChartExampleLinesFeatures
 } from './examples/LinearChartExample'
 
 # LinearChart
@@ -195,24 +196,31 @@ formatValueForTooltipTitle={v => {
 
 Чтобы показать точки на линии в явном виде, добавьте `dots=ture`.
 
+Чтобы рядом с точками вывести значения, добавьте `showValues=true`
+(работает корректно, только если в `gridConfig` указать `withPaddings = true`).
+
 Чтобы добавить градиент к линии, укажите `withGradient=true`.
 
 `withBoundaries` — показывает лимиты на линиях и на графике. [Подробнее про лимиты](#лимиты)
+
+<LinearChartExampleLinesFeatures />
 
 ```ts
 [
   {
     values: [
+      { x: 0, y: 0 },
       { x: 1, y: 1 },
       { x: 2, y: 0 },
       { x: 5, y: 3 },
       { x: 7, y: 1 },
-      { x: 8, y: 2 },
+      { x: 9, y: 3 },
     ],
     dots: true,
-    lineName: 'Северный бур',
+    showValues: true,
+    lineName: 'Красивая синяя линия',
     withGradient: true,
-    color: 'var(--color-bg-success)',
+    color: 'var(--color-bg-normal)'
   },
 ]
 ```
@@ -403,6 +411,7 @@ formatValueForTooltipTitle={v => {
 | [`lineName`](#свойства-линии)        | `string`          | -            | Название линии на графике                                 |
 | [`color`](#свойства-линии)           | `string`          | -            | Цвет линии                                                |
 | [`dots?`](#свойства-линии)           | `boolean`         | -            | Показывает точки на линии в явном виде                    |
+| [`showValues?`](#свойства-линии) | `boolean`         | -            | Выводит значение рядом с точкой. Корректно работает, если в свойстве [`withPaddings`](#gridconfig) указано `true`  |
 | [`withGradient?`](#свойства-линии)   | `boolean`         | -            | Добавляет градиент под линией                             |
 | [`withBoundaries?`](#свойства-линии) | `boolean`         | -            | Добавляет отображение лимитов на линию (если они указаны) |
 

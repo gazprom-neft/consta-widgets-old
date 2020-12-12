@@ -15,6 +15,23 @@ export const gridConfigSimple = {
   },
 } as const
 
+export const gridConfigPaddings = {
+  x: {
+    labels: 'bottom',
+    labelTicks: 1,
+    gridTicks: 10,
+    guide: true,
+    withPaddings: true,
+  },
+  y: {
+    labels: 'left',
+    labelTicks: 1,
+    gridTicks: 3,
+    guide: true,
+    withPaddings: true,
+  },
+} as const
+
 export const gridConfigFormat = {
   x: {
     labels: 'bottom',
@@ -76,10 +93,26 @@ export const linesWithoutGradient = [
       { x: 7, y: 1 },
       { x: 9, y: 3 },
     ],
-    dots: true,
-    lineName: 'Красивая зеленая линия',
-    withGradient: false,
+    lineName: 'Простая зеленая линия',
     color: 'var(--color-bg-success)',
+  },
+] as const
+
+export const linesFeatures = [
+  {
+    values: [
+      { x: 0, y: 0 },
+      { x: 1, y: 1 },
+      { x: 2, y: 0 },
+      { x: 5, y: 3 },
+      { x: 7, y: 1 },
+      { x: 9, y: 3 },
+    ],
+    dots: true,
+    showValues: true,
+    lineName: 'Красивая синяя линия',
+    withGradient: true,
+    color: 'var(--color-bg-normal)',
   },
 ] as const
 

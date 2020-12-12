@@ -7,8 +7,10 @@ import {
   boundaries,
   gridConfigFormat,
   gridConfigLabel,
+  gridConfigPaddings,
   gridConfigSimple,
   linesBoundaries,
+  linesFeatures,
   linesFormat,
   linesNull,
   linesSimple,
@@ -23,6 +25,19 @@ export const LinearChartExampleWithoutGradient = () => (
       title="Название графика"
       lines={linesWithoutGradient}
       gridConfig={gridConfigSimple}
+      isHorizontal
+      unit="единицы"
+      background="linear-gradient(to right, #f54d4d48, transparent)"
+    />
+  </Example>
+)
+
+export const LinearChartExampleLinesFeatures = () => (
+  <Example width="300px" height="150px" margin="l">
+    <LinearChart
+      title="Название графика"
+      lines={linesFeatures}
+      gridConfig={gridConfigPaddings}
       isHorizontal
       unit="единицы"
       background="linear-gradient(to right, #f54d4d48, transparent)"
