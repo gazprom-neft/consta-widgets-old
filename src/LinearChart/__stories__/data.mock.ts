@@ -66,6 +66,23 @@ export const linesSimple = [
   },
 ] as const
 
+export const linesWithoutGradient = [
+  {
+    values: [
+      { x: 0, y: 0 },
+      { x: 1, y: 1 },
+      { x: 2, y: 0 },
+      { x: 5, y: 3 },
+      { x: 7, y: 1 },
+      { x: 9, y: 3 },
+    ],
+    dots: true,
+    lineName: 'Красивая зеленая линия',
+    withGradient: false,
+    color: 'var(--color-bg-success)',
+  },
+] as const
+
 export const linesFormat = [
   {
     values: [

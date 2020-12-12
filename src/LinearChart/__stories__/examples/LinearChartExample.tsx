@@ -13,8 +13,22 @@ import {
   linesNull,
   linesSimple,
   linesThreshold,
+  linesWithoutGradient,
   threshold,
 } from '../data.mock'
+
+export const LinearChartExampleWithoutGradient = () => (
+  <Example width="300px" height="150px" margin="l">
+    <LinearChart
+      title="Название графика"
+      lines={linesWithoutGradient}
+      gridConfig={gridConfigSimple}
+      isHorizontal
+      unit="единицы"
+      background="linear-gradient(to right, #f54d4d48, transparent)"
+    />
+  </Example>
+)
 
 export const LinearChartExampleGeneral = () => (
   <Example width="300px" height="150px" margin="l">
