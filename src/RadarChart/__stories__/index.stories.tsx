@@ -48,10 +48,10 @@ const getFormattersForTooltip = () => {
 const decorators = [withSmartKnobs({ ignoreProps: ['backgroundColor', 'title'] })] as const
 
 const parameters = {
+  docs: {
+    page: docs,
+  },
   environment: {
-    docs: {
-      page: docs,
-    },
     style: {
       width: '550px',
       height: '80vh',
