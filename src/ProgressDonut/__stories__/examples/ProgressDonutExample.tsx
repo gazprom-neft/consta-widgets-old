@@ -26,6 +26,16 @@ export const ProgressDonutExample = () => (
   </Example>
 )
 
+export const ProgressDonutTooltip = () => (
+  <Example height="150px">
+    <ProgressDonut
+      title="Самая красивая диаграмма"
+      colors={['var(--color-bg-normal)', 'var(--color-bg-success)']}
+      data={data}
+    />
+  </Example>
+)
+
 export const ProgressDonut120 = () => (
   <Example height="150px">
     <ProgressDonut title={title} data={data120} colors={colors} />
