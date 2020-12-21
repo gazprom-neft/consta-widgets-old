@@ -57,9 +57,14 @@ type RangeProps = {
   renderControls?: RenderControls<DateRange>
 } & ValueProps<DateRange>
 
-export type Data = DateLimitProps & (SingleProps | RangeProps)
+type ExpandableProps = {
+  useInputDate?: boolean
+  useActionButtons?: boolean
+}
 
-type Props = DateLimitProps & StyleProps & (SingleProps | RangeProps)
+export type Data = DateLimitProps & ExpandableProps & (SingleProps | RangeProps)
+
+type Props = DateLimitProps & ExpandableProps & StyleProps & (SingleProps | RangeProps)
 
 const formatOutOfRangeDate = (date: Date) => format(date, 'dd.MM.yyyy')
 
@@ -200,44 +205,56 @@ export const DatePicker: React.FC<Props> = props => {
     })
   }
 
-  return (
-    <div>
-      <div
-        className={css.controls}
-        ref={controlsRef}
-        onClick={() => setIsTooltipVisible(!isTooltipVisible)}
-      >
-        {renderControls()}
-      </div>
-      {isTooltipVisible && (
-        <Popover
-          anchorRef={controlsRef}
-          offset={4}
-          direction="downCenter"
-          possibleDirections={['upCenter', 'leftCenter', 'rightCenter', 'downCenter']}
-          onClickOutside={handleApplyDate}
-        >
-          <div className={classnames(themeClassNames.color.invert, css.tooltip)}>
-            {props.type === 'date' ? (
-              <MonthsSliderSingle {...monthsPanelCommonProps} />
-            ) : (
-              <DndProvider backend={HTML5Backend}>
-                <MonthsSliderRange
-                  {...monthsPanelCommonProps}
-                  value={isDateRange(props.value) ? props.value : undefined}
-                />
-              </DndProvider>
-            )}
-            <Calendar {...baseCommonProps} value={props.value} onSelect={handleSelectDate} />
-            <ActionButtons
-              {...baseCommonProps}
-              showQuartersSelector={props.type === 'date-range'}
-              onApply={handleApplyDate}
-              onSelect={handleSelectQuarter}
-            />
-          </div>
-        </Popover>
+  const { useInputDate = true, useActionButtons = true } = props
+
+  const renderCalendar = () => (
+    <div className={classnames(themeClassNames.color.invert, css.tooltip)}>
+      {props.type === 'date' ? (
+        <MonthsSliderSingle {...monthsPanelCommonProps} />
+      ) : (
+        <DndProvider backend={HTML5Backend}>
+          <MonthsSliderRange
+            {...monthsPanelCommonProps}
+            value={isDateRange(props.value) ? props.value : undefined}
+          />
+        </DndProvider>
+      )}
+      <Calendar {...baseCommonProps} value={props.value} onSelect={handleSelectDate} />
+      {useActionButtons && (
+        <ActionButtons
+          {...baseCommonProps}
+          showQuartersSelector={props.type === 'date-range'}
+          onApply={handleApplyDate}
+          onSelect={handleSelectQuarter}
+        />
       )}
     </div>
   )
+
+  if (useInputDate) {
+    return (
+      <div>
+        <div
+          className={css.controls}
+          ref={controlsRef}
+          onClick={() => setIsTooltipVisible(!isTooltipVisible)}
+        >
+          {renderControls()}
+        </div>
+        {isTooltipVisible && (
+          <Popover
+            anchorRef={controlsRef}
+            offset={4}
+            direction="downCenter"
+            possibleDirections={['upCenter', 'leftCenter', 'rightCenter', 'downCenter']}
+            onClickOutside={handleApplyDate}
+          >
+            {renderCalendar()}
+          </Popover>
+        )}
+      </div>
+    )
+  }
+
+  return renderCalendar()
 }
