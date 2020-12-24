@@ -10,11 +10,12 @@ import {
   BackgroundBarChartExampleThreshold,
   BackgroundBarChartExampleStart,
   BackgroundBarChartExampleEnd,
-  BackgroundBarChartExampleVertical,
+  BackgroundBarChartExampleHorizontal,
   BackgroundBarChartExampleUnitLeft,
   BackgroundBarChartExampleUnitNone,
   BackgroundBarChartExampleUnitBottom,
   BackgroundBarChartExampleUnitLeftBottom,
+  BackgroundBarChartExampleScroll
 } from './examples/BackgroundBarChartExample'
 
 # BackgroundBarChart
@@ -48,6 +49,7 @@ import {
 - [Свойства графика](#свойства-графика)
   - [Выравнивание](#выравнивание)
   - [Горизонтальный или вертикальный](#горизонтальный-или-вертикальный)
+  - [Прокрутка](#прокрутка)
   - [Единицы измерения](#единицы-измерения)
 - [Список свойств](#свойства)
 - [Пример использования](#пример)
@@ -138,7 +140,7 @@ formatValueForLabel={v => `${v} кг`}
 ### Тултип
 
 При наведении на столбец показывается тултип — всплывающее окно с дополнительной информацией об этом столбце.
-В нем видны названия название столбца, название фона под ним и значения.
+В нем видны название столбца, название фона под ним и значения.
 
 Вы можете поменять формат значения в тултипе (за это отвечает свойство `formatValueForTooltip`). Например, добавить к значению единицы измерения.
 
@@ -180,16 +182,22 @@ formatValueForTooltip={v => `${v} дыщ`}
 
 ### Горизонтальный или вертикальный
 
-По умолчанию график горизонтальный. Если вы укажете `isHorizontal={false}`,
+По умолчанию график вертикальный. Если вы укажете `isHorizontal={true}`,
 график повернется на 90 градусов вправо.
 
-<BackgroundBarChartExampleVertical />
+<BackgroundBarChartExampleHorizontal />
+
+### Прокрутка
+
+Вы можете добавить полосу прокрутки с помощью свойства `withScroll`.  Она появится, если
+график не поместится по высоте в родительский контейнер. Работает только с горизонтальными
+диаграммами (`isHorizontal={true}`).
 
 ### Единицы измерения
 
 За единицы измерения отвечает свойство `unit`.
 
-Вы можете расположить их как удобно, за расположение единиц отвечает `unitPosition`.
+Вы можете расположить единицы измерения как удобно, за их расположение отвечает `unitPosition`.
 Варианты: `left`, `bottom`, `left-and-bottom`, `none`.
 
 | `unitPosition="left"`                 | `unitPosition="bottom"`                 |
@@ -211,6 +219,7 @@ formatValueForTooltip={v => `${v} дыщ`}
 | [`unitPosition?`](#единицы-измерения)                | `left`, `bottom`, `left-and-bottom`, `none` | -            | Где показывать единицы измерения                            |
 | [`showValues?`](#значения-у-столбцов)                | `boolean`                                   | -            | Показывать значения величины столбцов                       |
 | [`isHorizontal`](#горизонтальный-или-вертикальный)   | `boolean`                                   | -            | Делает график горизонтальным                                |
+| [`withScroll?`](#прокрутка)                         | `boolean`                                   | -            | Добавляет прокрутку по вертикали (работает только вместе с `isHorizontal =  true`)  |
 | [`align?`](#выравнивание)                            | `'start'`, `'end'`                          | `'start'`    | Выравнивание столбцов                                       |
 | [`threshold?`](#предельные-значения)                 | [`Threshold`](#threshold)                   | -            | Предельные значения                                         |
 | [`formatValueForLabel?`](#формат-подписи-к-делениям) | `(value: number) => string`                 | -            | Формат подписей к делениям                                  |

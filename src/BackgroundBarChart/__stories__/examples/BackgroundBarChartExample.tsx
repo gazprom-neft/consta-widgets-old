@@ -16,7 +16,6 @@ export const BackgroundBarChartExample = () => (
       groups={groupsExample}
       gridTicks={4}
       valuesTicks={1}
-      isHorizontal={true}
       showValues={false}
       align="start"
       threshold={exampleData.threshold}
@@ -152,13 +151,13 @@ export const BackgroundBarChartExampleEnd = () => (
   </Example>
 )
 
-export const BackgroundBarChartExampleVertical = () => (
+export const BackgroundBarChartExampleHorizontal = () => (
   <Example width="300px">
     <BackgroundBarChart
       groups={groupsPotatoExample}
       gridTicks={5}
       valuesTicks={1}
-      isHorizontal={false}
+      isHorizontal={true}
       align="start"
     />
   </Example>
@@ -216,6 +215,19 @@ export const BackgroundBarChartExampleUnitBottom = () => (
       align="start"
       unit="кг"
       unitPosition="bottom"
+    />
+  </Example>
+)
+
+export const BackgroundBarChartExampleScroll = () => (
+  <Example height="50px">
+    <BackgroundBarChart
+      groups={groupsPotatoExample}
+      gridTicks={5}
+      valuesTicks={1}
+      isHorizontal={true}
+      align="start"
+      withScroll
     />
   </Example>
 )
