@@ -4,7 +4,7 @@ import { Meta } from '@storybook/addon-docs/blocks'
 
 # Дизайн
 
-В проекте используется дизайн система [GPN UI-Kit](https://github.com/gpn-prototypes/ui-kit). Дизайн система предоставляет базовые элементы интерфейса, наборы цветов, размеры текста и отступов.
+В проекте используется дизайн система [CONSTA](https://github.com/gazprom-neft/consta-uikit). Дизайн система предоставляет базовые элементы интерфейса, наборы цветов, размеры текста и отступов.
 
 Цвета и размеры поставляются в виде [CSS Custom Property](https://developer.mozilla.org/ru/docs/Web/CSS/Using_CSS_custom_properties), это позволяет переиспользовать их при реализации собственных элементов интерфейса, без копирования их фактического значения.
 
@@ -36,17 +36,17 @@ background: #22C38E;
 background: var(--color-bg-success);
 ```
 
-Полный список цветов в [Storybook](https://gpn-prototypes.github.io/ui-kit/?path=/story/theme--цвета), при просмотре необходимо выбрать тему в Storybook используемую на проекте, иначе есть вероятность расхождения цветов.
+Полный список цветов в [Storybook](https://consta-uikit.vercel.app/?path=/story/components-theme--playground), при просмотре необходимо выбрать тему в Storybook используемую на проекте, иначе есть вероятность расхождения цветов.
 
 > Пример смены темы доступен в репозитории модуля [Storybook Addon Themes](https://github.com/tonai/storybook-addon-themes)
 
 ### Работа с отступами
 
-В макетах отступы не помечаются комментарием и могут не совпадать с размерами из UI-Kit, при подборе из [исходного файла отступов](https://github.com/gpn-prototypes/ui-kit/blob/master/src/components/Theme/_space/Theme_space_gpnDefault.css) нужно выбирать максимально подходящий если такой существует, или уточнять у дизайнера какой выбрать из существующих.
+В макетах отступы не помечаются комментарием и могут не совпадать с размерами из UI-Kit, при подборе из [исходного файла отступов](https://github.com/gazprom-neft/consta-uikit/blob/master/src/components/Theme/_space/Theme_space_gpnDefault.css) нужно выбирать максимально подходящий если такой существует, или уточнять у дизайнера какой выбрать из существующих.
 
 ## Текст
 
-UI-Kit предоставляет возможность по настройке отображения текста через компонент [Text](https://gpn-prototypes.github.io/ui-kit/?path=/story/text--текст) и через CSS Custom Property.
+UI-Kit предоставляет возможность по настройке отображения текста через компонент [Text](https://consta-uikit.vercel.app/?path=/story/text--текст) и через CSS Custom Property.
 
 При реализации элементов интерфейса, необходимо отдавать предпочтение компоненту, и только когда это не подходит для решения задачи, например текст в SVG элементах, то тогда следует настроить стиль текста в соответствии с макетом через CSS Custom Properties.
 
