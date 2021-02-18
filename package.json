@@ -69,7 +69,7 @@
     "classnames": "2.2.6",
     "d3": "5.12.0",
     "date-fns": "2.9.0",
-    "lodash": "4.17.19",
+    "lodash": "4.17.20",
     "react-dnd": "9.3.2",
     "react-dnd-html5-backend": "9.3.2",
     "react-uid": "2.2.0"
