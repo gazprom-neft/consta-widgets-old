@@ -129,6 +129,49 @@ export const DatePickerRangeThirdPartyInputStory = createStory(
   }
 )
 
+const DatePickerExpandedStoryContent = () => {
+  const [date, setDate] = React.useState<Date | undefined>()
+
+  return (
+    <DatePicker
+      type="date"
+      value={date}
+      onChange={setDate}
+      useInputDate={false}
+      useActionButtons={false}
+      {...defaultProps()}
+    />
+  )
+}
+
+export const DatePickerExpandedStory = createStory(() => <DatePickerExpandedStoryContent />, {
+  name: 'Выбор даты на развернутом пикере',
+  decorators: DECORATORS,
+})
+
+const DatePickerExpandedStoryRangeContent = () => {
+  const [range, setRange] = React.useState<DateRange | undefined>([undefined, undefined])
+
+  return (
+    <DatePicker
+      type="date-range"
+      value={range}
+      onChange={setRange}
+      useInputDate={false}
+      useActionButtons={false}
+      {...defaultProps()}
+    />
+  )
+}
+
+export const DatePickerExpandedRangeStory = createStory(
+  () => <DatePickerExpandedStoryRangeContent />,
+  {
+    name: 'Выбор диапазона дат на развернутом пикере',
+    decorators: DECORATORS,
+  }
+)
+
 export default createMetadata({
   title: 'components/DatePicker',
 })
